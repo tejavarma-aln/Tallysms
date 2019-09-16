@@ -1,0 +1,35 @@
+ 
+	;;;;;;;; com interface part ;;;;;;;;;;;
+	
+
+[COM Interface:SmsService]
+	
+ Project:MessageTunnel
+	Class:Class1
+	Interface:push_msg
+	Parameter:p1:String:In
+ Return:String
+	
+
+;;;;;; repeat same for all forms receipt,payment etc as per your need
+
+[#Form:SalesColor]
+	On:Form Accept:Yes:Call:PushSms
+	
+;;;; edit the message as you need
+
+[System:Formulae]
+	endmobileno:$LedgerPhone:Ledger:$PartyLedgerName
+	endmsg:"thank you for shopping please visit again next time"
+	endurl:"http://api.sms.com/index.php/api/bulk-sms?username=usernam&password=password&from=APPLPS&to="+@@endmobileno+"&message="+@@endmsg
+ 
+
+;; function to call cominterface
+
+
+[Function:PushSms]
+	01:Exec COM Interface:SmsService:@@endurl
+	02:Log:$$LastResult
+	
+	
+	;; shows resposen in the calculator panel
