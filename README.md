@@ -12,7 +12,14 @@ steps to register dll:
 1)Download and Extract MessageTunnel.zip file attached below
 1. Copy file (MessageTunnel.dll) to C:\Windows\System32
 2. Open Cmd in administrator Mode (Elavated mode)
+
+          For 64 Bit
 3. CD C:\Windows\Microsoft.NET\Framework64\v4.0.30319 ;; change directory
+
+          For 32 Bit
+3. CD C:\Windows\Microsoft.NET\Framework\v4.0.30319 ;; change directory
+
+
 4. Type without quote "regasm MessageTunnel.dll /codebase"
 
 you can customise the tdl as per your needs
